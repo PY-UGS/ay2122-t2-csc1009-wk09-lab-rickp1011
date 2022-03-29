@@ -2,6 +2,7 @@ package lab_9;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.Before;
+import org.junit.jupiter.api.RepeatedTest;
 
 import java.util.Random;
 
@@ -39,11 +40,30 @@ public class RandomChracterTest
         char output = randomchracter.getRandomCharacter();
         assertTrue(Character.isLetterOrDigit(output));
     }
-    @Test
-    public void testisprime()
-    {
-        assertTrue(randomchracter.isPrime(3));
-        assertFalse(randomchracter.isPrime(4));
+    @RepeatedTest(15)
+    void TestPrimeNumber(){
+        int num = RandomCharacter.getRandomDigitCharacter();
+        boolean testcase = false;
+        System.out.print(num);
+        if(num == 0 || num == 1)
+        {
+            System.out.print(" is not a prime");
+            assertTrue(false);
+        }
 
+        for(int i = 2; i <= (num/2); i++)
+        {
+            if(randomchracter.isPrime(num))
+            {
+                testcase = true;
+                System.out.print(" is not a prime");
+                break;
+            }
+        }
+        if(!randomchracter.isPrime(num))
+        {
+            System.out.print(" is a prime");
+        }
+        assertFalse(testcase);
     }
 }

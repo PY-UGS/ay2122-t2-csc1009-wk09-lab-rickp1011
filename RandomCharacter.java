@@ -23,9 +23,9 @@ public class RandomCharacter {
 
     /** Generate a random character */
     public static char getRandomCharacter() {
-        return getRandomCharacter('\u0000', '\uFFFF');
+        return getRandomCharacter('A','Z');
     }
-    private static boolean isPrime(int inputNum){
+    public static boolean isPrime(int inputNum){
         if (inputNum <= 3 || inputNum % 2 == 0)
             return inputNum == 2 || inputNum == 3; //this returns false if number is <=1 & true if number = 2 or 3
         int divisor = 3;
@@ -60,12 +60,19 @@ public class RandomCharacter {
 
         System.out.println("\nPrime Numbers: ");
         int num = 0;// generate a random number
-        num = rand.nextInt(1000) + 1;
-
-        while (!isPrime(num))
+        int i =0;
+        while(i<15)
         {
             num = rand.nextInt(1000) + 1;
+            if (isPrime(num) == true)
+            {
+                System.out.println(num + " true");
+            }
+            else
+            {
+                System.out.println(num + " false");
+            }
+            i+=1;
         }
-        System.out.println(num);  // print the numbe
         }
     }
